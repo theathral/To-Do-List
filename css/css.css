@@ -1,4 +1,14 @@
-.font-awesome {
-    font-family: 'Arial', 'Font Awesome 5 Pro';
-    font-weight: 900;
+.form-control:disabled, .form-control[readonly]  {
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.back-to-top {
+    display: none;
+    cursor: pointer;
+    position: fixed;
+    padding: 12px 16px;
+    bottom: 20px;
+    right: 20px;
+    font-size: 16px;
 }

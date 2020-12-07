@@ -21,7 +21,7 @@
 <div class="container mt-5">
     <div class="row my-5">
         <div class="col-sm-6">
-            <h2>My Notes</h2>
+            <h2>My To-Do List</h2>
         </div>
 
         <!-- Button trigger modal -->
@@ -49,63 +49,67 @@
         <div class="tab-pane fade show active" id="inProgressList" role="tabpanel" aria-labelledby="pills-home-tab">
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="h3 text-center mb-4">Important</div>
 
-                            <div class="accordion mx-1" id="notes-important-results" role="tablist"
-                                 aria-multiselectable="true">
+                            <div class="card bg-danger text-white mb-3">
+                                <div class="card-header">
+                                    Note 1
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Test Note 1</h5>
+                                    <p class="card-text">To do...</p>
+                                </div>
+                                <div class="card-footer">
+                                    <i class="fas fa-expand"></i>
+                                    <div class="float-right">
+                                        <i class="fas fa-edit"></i>
+                                        <i class="fas fa-trash"></i>
+                                    </div>
+                                </div>
+                            </div>
 
-                                <div class="card bg-danger text-white mb-3">
-                                    <div class="card-header">
-                                        <i class="fas fa-expand"></i>
-                                        Note 1
-                                        <i class="fas fa-exclamation-triangle"></i>
-                                        <div class="float-right">
-                                            <i class="fas fa-edit"></i>
-                                            <i class="fas fa-trash"></i>
-                                        </div>
-                                    </div>
-                                    <div class="card-body collapse" id="testNote" role="tabpanel">
-                                        <h5 class="card-title">Test Note 1</h5>
-                                        <p class="card-text">To do...</p>
+                            <div class="card bg-danger text-white mb-3">
+                                <div class="card-header">
+                                    Note 2
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Test Note 1</h5>
+                                    <p class="card-text">To do...</p>
+                                </div>
+                                <div class="card-footer">
+                                    <i class="fas fa-expand"></i>
+                                    <div class="float-right">
+                                        <i class="fas fa-edit"></i>
+                                        <i class="fas fa-trash"></i>
                                     </div>
                                 </div>
-                                <div class="card bg-danger text-white mb-3">
-                                    <div class="card-header">
-                                        <i class="fas fa-expand"></i>
-                                        Note 2
-                                        <i class="fas fa-exclamation-triangle"></i>
-                                        <div class="float-right">
-                                            <i class="fas fa-edit"></i>
-                                            <i class="fas fa-trash"></i>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Test Note 1</h5>
-                                        <p class="card-text">To do...</p>
-                                    </div>
-                                </div>
-                                <div class="card bg-warning text-dark mb-3">
-                                    <div class="card-header">
-                                        <i class="fas fa-expand"></i>
-                                        Note 3
-                                        <i class="fas fa-exclamation-circle"></i>
-                                        <div class="float-right">
-                                            <i class="fas fa-edit"></i>
-                                            <i class="fas fa-trash"></i>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Test Note 1</h5>
-                                        <p class="card-text">To do...</p>
-                                    </div>
-                                </div>
+                            </div>
 
+                            <div class="card bg-warning text-dark mb-3">
+                                <div class="card-header">
+                                    Note 3
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Test Note 1</h5>
+                                    <p class="card-text">To do...</p>
+                                </div>
+                                <div class="card-footer">
+                                    <i class="fas fa-expand"></i>
+                                    <div class="float-right">
+                                        <i class="fas fa-edit"></i>
+                                        <i class="fas fa-trash"></i>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
+
 
                         <div class="col-sm-6">
                             <div class="h3 text-center mb-4">Unimportant</div>
@@ -114,7 +118,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="h3 text-center mb-4">Scheduled</div>
@@ -181,11 +185,11 @@
     </div>
 </div>
 
-<!--&lt;!&ndash; Back to Top Button &ndash;&gt;-->
-<!--<button class="btn back-to-top border-0 rounded-circle text-white">-->
-<!--    <i class="fa fa-chevron-up"></i>-->
-<!--</button>-->
-<!--&lt;!&ndash; #Back to Top Button &ndash;&gt;-->
+<!-- Back to Top Button -->
+<button class="btn back-to-top border-0 rounded-circle bg-primary text-white">
+    <i class="fa fa-chevron-up"></i>
+</button>
+<!-- #Back to Top Button -->
 
 
 <!-- Modal -->
@@ -234,7 +238,7 @@
 
                         <div class="form-group col-md-6">
                             <label for="date">Date</label>
-                            <input type="text" class="form-control datepicker" id="date">
+                            <input type="text" class="form-control datepicker cursor-pointer" id="date" readonly>
                         </div>
                     </div>
 
@@ -253,6 +257,7 @@
         </div>
     </div>
 </div>
+<!-- Modal -->
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
