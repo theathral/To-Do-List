@@ -23,11 +23,12 @@ $(".datepicker").flatpickr({
     time_24hr: true,
     weekNumbers: true,
 });
+
 // #Date Options
 
 
+// Make Card
 function makeCard(note) {
-
     let bg_color = ''
     let text_color = ''
 
@@ -52,9 +53,17 @@ function makeCard(note) {
             throw DOMException;
     }
 
+    if (note.status === 'finished')
+        makeFinishedCard(note, bg_color, text_color);
+    else
+        makeInProgressCard(note, bg_color, text_color);
+
+}
+
+function makeInProgressCard(note) {
     return $('<div/>').addClass(['card', bg_color, text_color, 'mb-3']).append(
         $('<h5/>').addClass('card-header')
-            .append('note.title'),
+            .append(note.title),
         $('<div/>').addClass('card-body').append(
             $('<h6/>').addClass('card-text').html('Status: ' + note.status),
             $('<h6/>').addClass('card-text').html('Date: ' + note.date),
@@ -71,5 +80,19 @@ function makeCard(note) {
     )
 }
 
+function makeFinishedCard(bg_color, text_color, note) {
+    return $('<div/>').addClass(['card', bg_color, text_color, 'mb-3']).append(
+        $('<h5/>').addClass('card-header').append(
+            $('<i/>').addClass('fas fa-expand').attr('onclick', '#'),
+            note.title,
+            $('<div/>').addClass('float-right').append(
+                $('<i/>').addClass('fas fa-edit').attr('onclick', '#'),
+                '&nbsp;',
+                $('<i/>').addClass('fas fa-trash').attr('onclick', '#')
+            )
+        )
+    )
+}
+// #Make Card
 
 
