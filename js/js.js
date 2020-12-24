@@ -54,10 +54,9 @@ function makeCard(note) {
     }
 
     if (note.status === 'finished')
-        makeFinishedCard(note, bg_color, text_color);
-    else
-        makeInProgressCard(note, bg_color, text_color);
+        return makeFinishedCard(note, bg_color, text_color);
 
+    return makeInProgressCard(note, bg_color, text_color);
 }
 
 function makeInProgressCard(note) {
@@ -93,6 +92,7 @@ function makeFinishedCard(bg_color, text_color, note) {
         )
     )
 }
+
 // #Make Card
 
 

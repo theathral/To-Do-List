@@ -45,87 +45,30 @@
         </li>
     </ul>
     <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="inProgressList" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="pills-home-tab">
 
             <div class="row">
-                <div class="col-md-4 col-lg-6" id="test">
+                <div class="col-md-4 col-lg-6" id="inProgressList">
                     <div class="h3 text-center mb-4">In Progress</div>
                     <div class="row">
 
                         <div class="col-lg-6">
-                            <div class="card bg-danger text-white mb-3">
-                                <div class="card-header h5">
-                                    Note 1
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-text">Status: asdf</h6>
-                                    <h6 class="card-text">Date: asdf</h6>
-                                    <p class="card-text">asdf</p>
-                                </div>
-                                <div class="card-footer">
-                                    <i class="fas fa-expand"></i>
-                                    <div class="float-right">
-                                        <i class="fas fa-edit"></i>
-                                        <i class="fas fa-trash"></i>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- For every in progress note -->
                         </div>
-
-<!--                        <div class="col-lg-6">-->
-<!--                            <div class="card bg-danger text-white mb-3">-->
-<!--                                <div class="card-header">-->
-<!--                                    Note 2-->
-<!--                                    <i class="fas fa-exclamation-triangle"></i>-->
-<!--                                </div>-->
-<!--                                <div class="card-body">-->
-<!--                                    <h5 class="card-title">Test Note 1</h5>-->
-<!--                                    <p class="card-text">To do...</p>-->
-<!--                                </div>-->
-<!--                                <div class="card-footer">-->
-<!--                                    <i class="fas fa-expand"></i>-->
-<!--                                    <div class="float-right">-->
-<!--                                        <i class="fas fa-edit"></i>-->
-<!--                                        <i class="fas fa-trash"></i>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
-<!--                        <div class="col-lg-6">-->
-<!--                            <div class="card bg-warning text-dark mb-3">-->
-<!--                                <div class="card-header">-->
-<!--                                    Note 3-->
-<!--                                    <i class="fas fa-exclamation-circle"></i>-->
-<!--                                </div>-->
-<!--                                <div class="card-body">-->
-<!--                                    <h5 class="card-title">Test Note 1</h5>-->
-<!--                                    <p class="card-text">To do...</p>-->
-<!--                                </div>-->
-<!--                                <div class="card-footer">-->
-<!--                                    <i class="fas fa-expand"></i>-->
-<!--                                    <div class="float-right">-->
-<!--                                        <i class="fas fa-edit"></i>-->
-<!--                                        <i class="fas fa-trash"></i>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-
+                        <!-- Dynamically -->
                     </div>
 
                 </div>
 
                 <div class="col-md-8 col-lg-6">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6" id="ScheduledList">
                             <div class="h3 text-center mb-4">Scheduled</div>
-
+                            <!-- Dynamically -->
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6" id="WaitingList">
                             <div class="h3 text-center mb-4">Waiting</div>
-
+                            <!-- Dynamically -->
                         </div>
                     </div>
                 </div>
@@ -135,50 +78,7 @@
 
 
         <div class="tab-pane fade" id="finishedList" role="tabpanel" aria-labelledby="pills-profile-tab">
-
-            <div class="card bg-secondary text-white mb-3">
-                <div class="card-header">
-                    <i class="fas fa-expand"></i>
-                    Finished Note 1
-                    <div class="float-right">
-                        <i class="fas fa-edit"></i>
-                        <i class="fas fa-trash"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="card bg-info text-white mb-3">
-                <div class="card-header">
-                    <i class="fas fa-expand"></i>
-                    Finished Note 2
-                    <div class="float-right">
-                        <i class="fas fa-edit"></i>
-                        <i class="fas fa-trash"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="card bg-warning text-dark mb-3">
-                <div class="card-header">
-                    <i class="fas fa-expand"></i>
-                    Finished Note 3
-                    <i class="fas fa-exclamation-circle"></i>
-                    <div class="float-right">
-                        <i class="fas fa-edit"></i>
-                        <i class="fas fa-trash"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="card bg-danger text-white mb-3">
-                <div class="card-header">
-                    <i class="fas fa-expand"></i>
-                    Finished Note 4
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <div class="float-right">
-                        <i class="fas fa-edit"></i>
-                        <i class="fas fa-trash"></i>
-                    </div>
-                </div>
-            </div>
-
+            <!-- Dynamically -->
         </div>
 
     </div>
