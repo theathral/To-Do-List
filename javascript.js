@@ -34,7 +34,7 @@ function makeCard(note) {
 
     switch (note.priority) {
         case 'low':
-            bg_color = 'bg-secondary';
+            bg_color = 'bg-success';
             text_color = 'text-white';
             break;
         case 'medium':
