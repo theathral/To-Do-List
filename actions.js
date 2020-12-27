@@ -84,10 +84,13 @@ let crud = new function () {
         }
     ];
 
+    // Allowed Priority Values
     this.priorityList = ['low', 'medium', 'high', 'critical'];
 
+    // Allowed Status Values
     this.statusList = ['in_progress', 'scheduled', 'waiting', 'finished'];
 
+    // Creates / Refresh the board
     this.createTable = function () {
 
         // Clear the Board
