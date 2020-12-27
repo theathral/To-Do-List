@@ -1,7 +1,88 @@
 let crud = new function () {
 
     // An array of JSON objects with values.
-    this.myNotes = [];
+    this.myNotes = [
+        {
+            id: 1,
+            title: "Test Note 1",
+            priority: "medium",
+            status: "waiting",
+            date: "15-01-2021 12:30",
+            details: "",
+        },
+        {
+            id: 2,
+            title: "Test Note 2",
+            priority: "critical",
+            status: "finished",
+            date: "20-01-2021 09:30",
+            details: "Test Note 2 Details",
+        },
+        {
+            id: 3,
+            title: "Test Note 3",
+            priority: "low",
+            status: "scheduled",
+            date: "30-01-2021 17:45",
+            details: "Test Note 3 Details",
+        },
+        {
+            id: 4,
+            title: "Test Note 4",
+            priority: "medium",
+            status: "finished",
+            date: "02-01-2021 18:00",
+            details: "Test Note 4 Details",
+        },
+        {
+            id: 5,
+            title: "Test Note 5",
+            priority: "low",
+            status: "in_progress",
+            date: "22-02-2021 14:10",
+            details: "Test Note 5 Details",
+        },
+        {
+            id: 6,
+            title: "Test Note 6",
+            priority: "high",
+            status: "scheduled",
+            date: "05-03-2021 20:50",
+            details: "Test Note 6 Details",
+        },
+        {
+            id: 7,
+            title: "Test Note 7",
+            priority: "low",
+            status: "finished",
+            date: "05-01-2021 00:00",
+            details: "Test Note 7 Details",
+        },
+        {
+            id: 8,
+            title: "Test Note 8",
+            priority: "medium",
+            status: "in_progress",
+            date: "07-01-2021 09:00",
+            details: "Test Note 8 Details",
+        },
+        {
+            id: 9,
+            title: "Test Note 9",
+            priority: "high",
+            status: "waiting",
+            date: "08-01-2021 12:45",
+            details: "Test Note 9 Details",
+        },
+        {
+            id: 10,
+            title: "Test Note 10",
+            priority: "critical",
+            status: "finished",
+            date: "17-01-2021 21:00",
+            details: "Test Note 10 Details",
+        }
+    ];
 
     this.priorityList = ['low', 'medium', 'high', 'critical'];
 
@@ -10,12 +91,10 @@ let crud = new function () {
     this.createTable = function () {
 
         // Clear the Board
-        $('#inProgressList').empty();
-        $('#scheduledList').empty();
-        $('#waitingList').empty();
-        $('#finishedList').empty();
+        this.emptyBoard();
 
-        crud.myNotes.forEach(json => {
+        for (let i = this.myNotes.length - 1; i > 0; i--) {
+            const json = this.myNotes[i];
             switch (json.status) {
                 case "in_progress":
                     $('#inProgressList').append(makeCard(json));
@@ -32,8 +111,16 @@ let crud = new function () {
                 default:
                     throw Error;
             }
-        })
+        }
     };
+
+    // Clear the Board
+    this.emptyBoard = function () {
+        $('#inProgressList').empty();
+        $('#scheduledList').empty();
+        $('#waitingList').empty();
+        $('#finishedList').empty();
+    }
 
     // Validate Input
     this.inputValidator = function (id) {
@@ -69,11 +156,8 @@ let crud = new function () {
     this.createPreparation = function () {
         $('#noteModalLabel').html('Create Note');
 
-        $('#title').val('');
-        $('#priority').val('');
-        $('#status').val('');
-        $('#date').val('');
-        $('#details').val('');
+        document.getElementById('form').reset();
+        $('.selectpicker').selectpicker('refresh');
 
         $('#submitBtn').attr('onclick', 'crud.create()');
     };
@@ -103,6 +187,7 @@ let crud = new function () {
                 $('#status').val(cur.status);
                 $('#date').val(cur.date);
                 $('#details').val(cur.details);
+                $('.selectpicker').selectpicker('refresh');
 
                 $('#submitBtn').attr('onclick', 'crud.update(' + cur.id + ')');
 
@@ -125,7 +210,7 @@ let crud = new function () {
         // Reload Lists
         this.createTable();
         this.success('The Note has been updated successfully');
-    }
+    };
 
     // Update Note
     this.finish = function (id) {
@@ -141,7 +226,7 @@ let crud = new function () {
         // Reload Lists
         this.createTable();
         this.success('The Note has been finished successfully');
-    }
+    };
 
 
     // Delete Note
