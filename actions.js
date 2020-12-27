@@ -1,7 +1,7 @@
 let crud = new function () {
 
     // An array of JSON objects with values.
-    this.myNotes = [
+    this.defaultNotes = [
         {
             id: 1,
             title: "Test Note 1",
@@ -84,6 +84,11 @@ let crud = new function () {
         }
     ];
 
+
+    this.myNotes = (JSON.parse(window.localStorage.getItem('myNotes')) === null)
+        ? this.defaultNotes
+        : JSON.parse(window.localStorage.getItem('myNotes'));
+
     // Allowed Priority Values
     this.priorityList = ['low', 'medium', 'high', 'critical'];
 
@@ -92,6 +97,9 @@ let crud = new function () {
 
     // Creates / Refresh the board
     this.createTable = function () {
+
+        // Save to Local Storage
+        window.localStorage.setItem('myNotes', JSON.stringify(this.myNotes));
 
         // Clear the Board
         this.emptyBoard();
