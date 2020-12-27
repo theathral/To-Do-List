@@ -55,39 +55,57 @@ function makeCard(note) {
 
     if (note.status === 'finished')
         return makeFinishedCard(note, bg_color, text_color);
+    else if (note.status === 'in_progress')
+        return makeInProgressCard(note, bg_color, text_color);
+    else
+        return makeWorkingCard(note, bg_color, text_color);
 
-    return makeInProgressCard(note, bg_color, text_color);
 }
 
-function makeInProgressCard(note) {
+function makeInProgressCard(note, bg_color, text_color) {
+    return $('<div/>').addClass('col-lg-6').append(
+        makeWorkingCard(note, bg_color, text_color)
+    )
+}
+
+function makeWorkingCard(note, bg_color, text_color) {
     return $('<div/>').addClass(['card', bg_color, text_color, 'mb-3']).append(
         $('<h5/>').addClass('card-header')
             .append(note.title),
         $('<div/>').addClass('card-body').append(
             $('<h6/>').addClass('card-text').html('Status: ' + note.status),
             $('<h6/>').addClass('card-text').html('Date: ' + note.date),
-            $('<p/>').addClass('card-text').html(note.text)
+            $('<p/>').addClass('card-text').html(note.details)
         ),
         $('<div/>').addClass('card-footer').append(
-            $('<i/>').addClass('fas fa-expand').attr('onclick', '#'),
+            $('<a/>').attr('data-toggle', 'modal').attr('title', 'Finish').attr('onclick', 'crud.finish(' + note.id + ')').append(
+                $('<i/>').addClass('fas fa-check')
+            ),
             $('<div/>').addClass('float-right').append(
-                $('<i/>').addClass('fas fa-edit').attr('onclick', '#'),
+                $('<a/>').attr('data-toggle', 'modal').attr('title', 'Edit').attr('data-target', '#noteModal').attr('onclick', 'crud.edit(' + note.id + ')').append(
+                    $('<i/>').addClass('fas fa-edit')
+                ),
                 '&nbsp;',
-                $('<i/>').addClass('fas fa-trash').attr('onclick', '#')
+                $('<a/>').attr('data-toggle', 'modal').attr('title', 'Delete').attr('onclick', 'crud.delete(' + note.id + ')').append(
+                    $('<i/>').addClass('fas fa-trash')
+                ),
             )
         )
     )
 }
 
-function makeFinishedCard(bg_color, text_color, note) {
+function makeFinishedCard(note, bg_color, text_color) {
     return $('<div/>').addClass(['card', bg_color, text_color, 'mb-3']).append(
         $('<h5/>').addClass('card-header').append(
-            $('<i/>').addClass('fas fa-expand').attr('onclick', '#'),
             note.title,
             $('<div/>').addClass('float-right').append(
-                $('<i/>').addClass('fas fa-edit').attr('onclick', '#'),
+                $('<a/>').attr('data-toggle', 'modal').attr('data-target', '#noteModal').attr('onclick', 'crud.edit(' + note.id + ')').append(
+                    $('<i/>').addClass('fas fa-edit')
+                ),
                 '&nbsp;',
-                $('<i/>').addClass('fas fa-trash').attr('onclick', '#')
+                $('<a/>').attr('data-toggle', 'modal').attr('onclick', 'crud.delete(' + note.id + ')').append(
+                    $('<i/>').addClass('fas fa-trash')
+                ),
             )
         )
     )

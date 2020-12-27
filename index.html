@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes' List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.css">
+    <link rel="stylesheet" href="styles.css"/>
+
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="row my-5">
+        <div class="col-sm-6">
+            <h2>My To-Do List</h2>
+        </div>
+
+        <!-- Button trigger modal -->
+        <div class="col-sm-6">
+            <button type="button" class="btn btn-primary float-right" data-toggle="modal"
+                    data-target="#noteModal" onclick="crud.createPreparation()">
+                Create New Note
+            </button>
+        </div>
+        <!-- #Button trigger modal -->
+    </div>
+
+
+    <ul class="nav nav-pills nav-justified mb-3 font-weight-bolder" id="notesListPills" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="workingListPill" data-toggle="pill" href="#workingList" role="tab"
+               aria-controls="pills-home" aria-selected="true">Working</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="finishedListPill" data-toggle="pill" href="#finishedList" role="tab"
+               aria-controls="pills-profile" aria-selected="false">Finished</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="workingList" role="tabpanel" aria-labelledby="pills-home-tab">
+
+            <div class="row">
+                <div class="col-md-4 col-lg-6" id="test">
+                    <div class="h3 text-center mb-4">In Progress</div>
+                    <div class="row" id="inProgressList">
+                        <!-- Dynamically -->
+                    </div>
+                </div>
+
+                <div class="col-md-8 col-lg-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="h3 text-center mb-4">Scheduled</div>
+                            <div id="scheduledList">
+                                <!-- Dynamically -->
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="h3 text-center mb-4">Waiting</div>
+                            <div id="waitingList">
+                                <!-- Dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="tab-pane fade" id="finishedList" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <!-- Dynamically -->
+        </div>
+
+    </div>
+</div>
+
+<!-- Back to Top Button -->
+<button class="btn back-to-top border-0 rounded-circle bg-primary text-white">
+    <i class="fa fa-chevron-up"></i>
+</button>
+<!-- #Back to Top Button -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="noteModal" tabindex="-1"
+     aria-labelledby="noteModalLabel" aria-hidden="true" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="noteModalLabel"><!-- Dynamically --></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Note Title...">
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="priority">Priority</label>
+                        <select id="priority" class="form-control selectpicker">
+                            <option value="low">Low</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="high">High</option>
+                            <option value="critical">Critical</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="status">Status</label>
+                        <select id="status" class="form-control selectpicker">
+                            <option value="in_progress" selected>In Progress</option>
+                            <option value="scheduled">Scheduled</option>
+                            <option value="waiting">Waiting</option>
+                            <option value="finished">Finished</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <label for="date">Date</label>
+                        <input type="text" class="form-control datepicker" id="date" placeholder="Select Date.."
+                               readonly>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="details">Details</label>
+                    <textarea class="form-control" id="details" placeholder="Details of the note..."></textarea>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">
+                    Cancel
+                </button>
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" id="submitBtn" onclick="">
+                    Save Note
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.12.6/dist/sweetalert2.all.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script>
+
+<script src="javascript.js"></script>
+<script src="actions.js"></script>
+
+</body>
+</html>
